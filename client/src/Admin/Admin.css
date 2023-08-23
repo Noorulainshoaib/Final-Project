@@ -1,0 +1,87 @@
+/* styles/admin.css */
+
+/* Global styles */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f5f7fa;
+  }
+  
+  /* Admin home container */
+  .admin-home-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  /* Header styles */
+  .admin-header {
+    background-color: black;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+  }
+  
+  /* Main content area */
+  .admin-main {
+    flex: 1;
+    display: flex;
+  }
+  
+  /* Sidebar styles */
+  .admin-sidebar {
+    width: 240px;
+    background-color: #2c3e50;
+    color: white;
+    padding: 1rem;
+  }
+  
+  .admin-sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .admin-sidebar li {
+    margin-bottom: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .admin-sidebar li:hover {
+    background-color: #34495e;
+  }
+  
+  /* Content styles */
+  .admin-content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .centered-content {
+    text-align: center;
+  }
+  
+  .order-tracking {
+    padding: 2rem;
+    border: 1px solid #ccc;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .tracking-image img {
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  /* Footer styles */
+  .admin-footer {
+    background-color: #34495e;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+  }
+  
