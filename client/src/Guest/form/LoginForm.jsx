@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import { GlobalContext } from '../../Context/context';
@@ -15,6 +15,17 @@ export default function LoginForm() {
 
   const { state, dispatch } = useContext(GlobalContext);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = Cookies.get('token');
+    if(token !== "undefined"){
+      console.log('token available', token);
+      navigate('/');
+    }else{
+      console.log('token not available', token);
+    }
+  }, []);
+  
 
   const handleFormSubmit = (e) => {
     e.preventDefault();

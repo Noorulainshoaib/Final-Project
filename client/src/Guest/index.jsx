@@ -9,8 +9,7 @@ import Footer from './components/Footer';
 
 export default function Guest() {
 
-
-  const [user, setUser] = useState(false); 
+  const [user, setUser] = useState(false);
 
   return (
     <>

@@ -25,8 +25,6 @@ export default function HomePage() {
 
   return (
     <>
-   
-
       <div style={welcomeMessageStyle}>
         <h2 style={headingStyle}>Welcome to Shopping World</h2>
         <p style={messageStyle}>

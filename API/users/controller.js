@@ -46,7 +46,7 @@ const login = async (req, res) => {
       });
     } else {
       const decryptPass = await compare(password, checkExistUser.password);
-      console.log(decryptPass);
+      console.log("login result", decryptPass);
 
       if (email == checkExistUser.email && decryptPass) {
         const token = sign(
@@ -68,9 +68,9 @@ const login = async (req, res) => {
         });
       }
 
-      res.json({
-        user: checkExistUser,
-      });
+      // res.json({
+      //   user: checkExistUser,
+      // });
     }
   } catch (error) {
     res.json({

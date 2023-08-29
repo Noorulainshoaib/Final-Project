@@ -26,12 +26,16 @@ export default function HomePage() {
     </>
   );
 }*/
-import React from 'react';
+import React, { useEffect } from 'react';
 import Slider from '../components/Slider';
 import CategoriesSection from '../components/CategorySection';
 import Contact from './Contact';
+import Cookies from 'js-cookie';
+import { useNavigate } from 'react-router-dom';
 
 export default function HomePage() {
+  const navigate = useNavigate();
+
   const welcomeMessageStyle = {
     textAlign: 'center',
     margin: '50px auto',
@@ -40,6 +44,17 @@ export default function HomePage() {
     borderRadius: '10px',
     boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)',
   };
+
+  useEffect(() => {
+    const token = Cookies.get('token');
+    if(token === 'undefined'){
+      console.log('token not available', token);
+      navigate('/login');
+    }else{
+      console.log('token available', token);
+    }
+  }, []);
+  
 
   const headingStyle = {
     fontSize: '28px',
@@ -53,8 +68,6 @@ export default function HomePage() {
 
   return (
     <>
-   
-
       <div style={welcomeMessageStyle}>
         <h2 style={headingStyle}>Welcome to Shopping World</h2>
         <p style={messageStyle}>

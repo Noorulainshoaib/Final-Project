@@ -37,9 +37,10 @@ function Nav({ Toggle }) {
               <a className="dropdown-item" href="/category">
                 Category
               </a>
-              <a className="dropdown-item" href="/products">
+              <a className="dropdown-item" href="/product">
                Logout
               </a>
+              
              
             </div>
           </li>
