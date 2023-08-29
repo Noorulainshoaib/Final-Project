@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Navbar, Nav, Container } from 'react-bootstrap';
 import { FaHome, FaShoppingCart, FaEnvelope } from 'react-icons/fa';
@@ -8,6 +8,7 @@ import 'aos/dist/aos.css';
 import { GlobalContext } from '../../Context/context';
 import Cookies from 'js-cookie';
 import { CartContext } from '../CartContext/context';
+import { decodeToken } from 'react-jwt'
 
 function Navigation({ }) {
   useEffect(() => {
@@ -19,13 +20,13 @@ function Navigation({ }) {
   }, []);
 
   const [adminName, setAdminName] = useState('');
-  const { decodedToken } = useJwt(Cookies.get('token'));
 
   useEffect(() => {
-    if (decodedToken) {
-      setAdminName(decodedToken.username);
+    const res = decodeToken(Cookies.get('token'));
+    if (res) {
+      setAdminName(res.username);
     }
-  }, [decodedToken]);
+  }, []);
 
   const handleLogout = () => {
     Cookies.remove('token');
@@ -59,6 +60,7 @@ function Navigation({ }) {
             <Link className="nav-link stylish-link" to="/cart">
               <FaShoppingCart /> {/* Cart icon */}
             </Link>
+            
            
             </Nav>
         </Navbar.Collapse>
