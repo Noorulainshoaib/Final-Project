@@ -16,27 +16,26 @@ function Navigation({ loggedIn, handleLogout }) {
   }, []);
 
   return (
-    <Navbar expand="lg" className="navbar-light px-4 border-bottom top-fixed stylish-navbar side-in"style={{ backgroundColor: "#34495e"}} >
+    <Navbar expand="lg" className="navbar-light px-4 border-bottom top-fixed stylish-navbar side-in" style={{ backgroundColor: "#34495e", color: "white"}} >
       <Container>
         <Navbar.Brand href="#home">
-          <span className="text-dark" data-aos="fade-right">
+          <span className="text-light" data-aos="fade-right">
             <b>Shoping World</b>
           </span>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
-            <Link className="nav-link stylish-link" to="/">
+            <Link className="nav-link text-light stylish-link" to="/">
               <FaHome />Home {/* Home icon */}
             </Link>
-            <Link className="nav-link stylish-link" to="/products/:productID">
+            <Link className="nav-link text-light stylish-link" to="/products/:productID">
               <BiPackage /> Products{/* Products (shopping cart) icon */}
             </Link>
-            <Link className="nav-link stylish-link" to="/cart">
+            <Link className="nav-link text-light stylish-link" to="/cart">
               <FaShoppingCart /> {/* Cart icon */}
             </Link>
-           
-            </Nav>
+          </Nav>
         </Navbar.Collapse>
       </Container>
     </Navbar>
