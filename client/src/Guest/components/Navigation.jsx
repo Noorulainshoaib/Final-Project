@@ -37,7 +37,7 @@ function Navigation({ loggedIn }) {
             <Link className="nav-link text-light stylish-link" to="/">
               <FaHome />Home {/* Home icon */}
             </Link>
-            <Link className="nav-link text-light stylish-link" to="/products/:productID">
+            <Link className="nav-link text-light stylish-link" to="/products">
               <BiPackage /> Products{/* Products (shopping cart) icon */}
             </Link>
 
