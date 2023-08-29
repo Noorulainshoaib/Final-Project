@@ -48,10 +48,10 @@ export default function HomePage() {
   useEffect(() => {
     const token = Cookies.get('token');
     if(token === 'undefined'){
-      console.log('token not available', token);
+      console.log('token not available');
       navigate('/login');
     }else{
-      console.log('token available', token);
+      console.log('authorized pppp');
     }
   }, []);
   

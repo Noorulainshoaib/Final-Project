@@ -19,10 +19,10 @@ export default function LoginForm() {
   useEffect(() => {
     const token = Cookies.get('token');
     if(token !== "undefined"){
-      console.log('token available', token);
+      // console.log('token available', token);
       navigate('/');
     }else{
-      console.log('token not available', token);
+      console.log('login pppppp', token);
     }
   }, []);
   
