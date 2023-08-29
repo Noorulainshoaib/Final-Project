@@ -31,7 +31,7 @@ export default function Admin(){
           
     )
 }*/
-import React from 'react';
+/*import React from 'react';
 import SideBar from './components/SideBar';
 import Home from './pages/Home';
 //import Category from './pages/Category';
@@ -58,4 +58,26 @@ export default function Admin() {
       </div>
     </div>
   );
+}*/import React from 'react'
+import AdminNav from './components/AdminNav'
+import { Route, Routes } from 'react-router-dom'
+import AdminHome from './pages/AdminHome'; // Use correct casing
+
+import Category from './pages/Category/Category'
+import Products from './pages/Products/Products'
+
+export default function App() {
+    return (
+        <>
+            <AdminNav />
+            <div>
+                <Routes>
+                    <Route path='/admin/home' element={<AdminHome />} />
+                    <Route path='/admin/category' element={<Category />} />
+                    <Route path='/admin/products' element={<Products/>} />
+                </Routes>
+
+            </div>
+        </>
+    )
 }

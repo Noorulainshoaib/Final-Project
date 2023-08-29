@@ -11,13 +11,65 @@ const getAllProducts = (req, res) => {
   })
 }
 
-const addProduct = (req, res) => {
- res.status(200).json({
-    message: "Added Successfully"
- })
-}
+const createProduct = async (req, res) => {
+    const { ProductName, ProductImage } = req.body;
+    console.log('ProductName:', ProductName);
+    console.log('ProductImage:', ProductImage);
+
+    if (!ProductName || !ProductImage) {
+        console.log('Missing Required Field');
+        res.status(400).json({
+            message: 'Missing Required Field'
+        });
+    } else {
+        try {
+            await connect(process.env.MONGO_URL);
+            console.log('DB Connected');
+            await Product.create({ ProductName, ProductImage });
+
+            const allProduct = await Product.find();;
+            res.json({
+                message: 'Added Successfully',
+                product: allProduct
+            })
+        } catch (error) {
+            res.status(400).json({
+                message: error.message
+            });
+        }
+    }
+};
+
+//update Product
 
 
+const updateProduct = async (req, res) => {
+    const { _id, ...updateData } = req.body;
+    const filter = { _id };
+    try {
+        await connect(process.env.MONGO_URL);
+
+        const updatedProduct = await Product.findOneAndUpdate(filter, updateData, {
+            new: true,
+        });
+
+        if (!updatedProduct) {
+            return res.status(404).json({
+                message: 'Product not found',
+            });
+        }
+
+        const allProducts = await Product.find(); 
+
+        res.json({ message: 'Success', product: updatedProduct, allProducts });
+    } catch (error) {
+        res.status(400).json({
+            message: error.message,
+        });
+    }
+};
+
+//delete products
 
 const deleteProduct = async (req, res) => {
     const { _id } = req.body; 
@@ -36,5 +88,5 @@ const deleteProduct = async (req, res) => {
         });
     }
 };
-
-module.exports = {getAllProducts , addProduct ,deleteProduct}
+    
+module.exports = {getAllProducts , createProduct ,updateProduct ,deleteProduct}

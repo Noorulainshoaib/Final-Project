@@ -2,34 +2,14 @@ const { Schema, model } = require('mongoose')
 
 const ProductSchema = new Schema(
     {
-        productName: {
+        ProductName: {
             type: String,
-            required: true,
-            unique: true
-        },
-        thumbnail: {
-            type: String,
+            unique: true,
             required: true
         },
-        description: {
+        ProductImage: {
             type: String,
             required: true
-        },
-        price: {
-            type: String,
-            required: true
-        },
-        category: {
-            type: String,
-            required: true
-        },
-        images: {
-            type: Array,
-            required: true
-        },
-        created: {
-            type: Date,
-            default: Date.now
         }
     }
 )

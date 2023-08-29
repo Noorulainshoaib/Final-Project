@@ -1,10 +1,10 @@
 import React from 'react';
-import Nav from './Nav';
+import AdminNav from '../components/AdminNav'
 
 export default function AdminHome() {
   return (
    <>
-   <Nav />
+   <AdminNav />
     <div className="admin-home-container">
       <header className="admin-header ">
         <h1>Welcome to Admin Dashboard</h1>
