@@ -26,7 +26,6 @@ Backend Api
 1) User Api 
 a)   POST /api/signup
 b)   POST /api/login
-c)   Delete /api/delete-user
 
 2) Category Api
 a)  get /api/get-all-categories
