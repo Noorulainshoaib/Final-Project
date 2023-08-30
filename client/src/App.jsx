@@ -35,6 +35,6 @@ export default function App() {
   }, []);  
 
   //to take it to use role give state.user to this function and it will take you to user side
-  const CurrentUser = getUserRole(currentUser)
+  const CurrentUser = getUserRole(currentUser);
   return <CurrentUser />
 }

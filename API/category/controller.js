@@ -1,11 +1,11 @@
-const Category =require('./model')
-const {connect } = require ('mongoose')
+const Category = require('./model')
+const { connect } = require('mongoose')
 require('dotenv').config()
 
-                 //getallcategorie//
-const getAllCategories = async(req, res) => {
+//getallcategorie//
+const getAllCategories = async (req, res) => {
 
-    try{
+    try {
         await connect(process.env.MONGO_URL)
 
         const allCategories = await Category.find()
@@ -14,38 +14,38 @@ const getAllCategories = async(req, res) => {
             category: allCategories
         })
     }
-    catch(error){
-   res.status(400).json({
-    message: error.message
-   })
+    catch (error) {
+        res.status(400).json({
+            message: error.message
+        })
     }
-    
-  }
 
-       //getcategorybyid
+}
 
-  const getCategoryById= async(req, res) => {
+//getcategorybyid
+
+const getCategoryById = async (req, res) => {
     const { _id } = req.query
     try {
-   
+
         await connect(process.env.MONGO_URL)
 
         const category = await Category.findOne({ _id })
 
         res.json({ category })
     }
-    catch(error){
-   res.status(400).json({
-    message: error.message
-   })
+    catch (error) {
+        res.status(400).json({
+            message: error.message
+        })
     }
-    
-  }
+
+}
 
 
-     // create category 
+// create category 
 
-  const createCategory = async(req, res) => {
+const createCategory = async (req, res) => {
     const { CategoryName, CategoryImage } = req.body
 
     if (!CategoryName || !CategoryImage) {
@@ -89,38 +89,38 @@ const getAllCategories = async(req, res) => {
 
 
 
-  //UpdateCategory 
+//UpdateCategory 
 
-   const updateCategory = async(req, res) => {
+const updateCategory = async (req, res) => {
     const { _id, CategoryName, CategoryImage } = req.body
     const filter = { _id };
     const update = { CategoryName, CategoryImage };
-    try{
+    try {
         await connect(process.env.MONGO_URL)
 
         await Category.findOneAndUpdate(filter, update, {
-               new: true
-            });
-            const category = await Category.find()
+            new: true
+        });
+        const category = await Category.find()
 
-            res.json({
-                message: "Success",
-                category
-            })
-    
-        }
-   
-    catch(error){
-   res.status(400).json({
-    message: error.message
-   })
+        res.json({
+            message: "Success",
+            category
+        })
+
     }
-    
-  }
- 
 
-  //Delete Category
-  const deleteCategory = async (req, res) => {
+    catch (error) {
+        res.status(400).json({
+            message: error.message
+        })
+    }
+
+}
+
+
+//Delete Category
+const deleteCategory = async (req, res) => {
     const { _id } = req.body
     try {
         await connect(process.env.MONGO_URL)
@@ -140,4 +140,4 @@ const getAllCategories = async(req, res) => {
     }
 }
 
-  module.exports ={getAllCategories , getCategoryById,createCategory ,updateCategory,deleteCategory }
+module.exports = { getAllCategories, getCategoryById, createCategory, updateCategory, deleteCategory }
